@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos — Schlossberg</title>
+<meta name="description" content="Obras de arquitectura e interiorismo de Schlossberg en París, Buenos Aires, Punta del Este y el resto del mundo.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Schlossberg</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="proyectos.html" class="is-active">Proyectos</a></li>
+    <li><a href="estudio.html">Estudio</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="page-head">
+  <p class="eyebrow">Obras</p>
+  <h1>Proyectos</h1>
+  <p>Una selección de casas, departamentos y espacios de hospitalidad, entre Europa y Sudamérica.</p>
+
+  <div class="filters" id="filters">
+    <button class="is-active" data-filter="all">Todos</button>
+    <button data-filter="paris">París</button>
+    <button data-filter="ba">Buenos Aires</button>
+    <button data-filter="pde">Punta del Este</button>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid" id="grid">
+
+      <article class="tile tile-a" data-city="pde">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Casa Retiro</h3><span class="meta">2024 — Punta del Este, Uruguay</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-b" data-city="paris">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Appartement Marais</h3><span class="meta">2023 — París</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-c" data-city="ba">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Casa Costanera</h3><span class="meta">2023 — Buenos Aires</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-c" data-city="pde">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Villa José Ignacio</h3><span class="meta">2022 — José Ignacio, Uruguay</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-a" data-city="paris">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Hôtel Particulier Le Marais</h3><span class="meta">2022 — París</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-b" data-city="ba">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Penthouse Recoleta</h3><span class="meta">2021 — Buenos Aires</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-a" data-city="pde">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Casa La Barra</h3><span class="meta">2021 — La Barra, Uruguay</span></div>
+        </a>
+      </article>
+
+      <article class="tile tile-b" data-city="paris">
+        <a href="proyectos.html">
+          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
+          <div class="tile-cap"><h3>Loft Canal Saint-Martin</h3><span class="meta">2020 — París</span></div>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <span class="footer-logo">Schlossberg</span>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Estudio</h4>
+          <a href="proyectos.html">Proyectos</a>
+          <a href="estudio.html">Estudio</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sedes</h4>
+          <p>París</p>
+          <p>Buenos Aires</p>
+          <p>Punta del Este</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:estudio@schlossberg.com">estudio@schlossberg.com</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Schlossberg. Todos los derechos reservados.</span>
+      <span>Arquitectura &amp; Interiorismo</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

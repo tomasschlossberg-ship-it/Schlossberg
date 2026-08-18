@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Schlossberg</title>
+<meta name="description" content="Contactá al estudio Schlossberg para tu próximo proyecto de arquitectura o interiorismo.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Schlossberg</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="estudio.html">Estudio</a></li>
+    <li><a href="contacto.html" class="is-active">Contacto</a></li>
+  </ul>
+</nav>
+
+<div class="page-head">
+  <p class="eyebrow">Escribinos</p>
+  <h1>Contacto</h1>
+  <p>Contanos sobre tu proyecto — dónde está, en qué etapa se encuentra y qué buscás. Te respondemos en 48 horas hábiles.</p>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Nombre y apellido</label>
+          <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="field">
+          <label for="location">Ubicación del proyecto</label>
+          <input type="text" id="location" name="location" placeholder="Ciudad, país">
+        </div>
+        <div class="field">
+          <label for="type">Tipo de proyecto</label>
+          <select id="type" name="type">
+            <option value="">Seleccionar</option>
+            <option value="arquitectura">Arquitectura</option>
+            <option value="interiorismo">Interiorismo</option>
+            <option value="ambos">Arquitectura + Interiorismo</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Contanos sobre tu proyecto</label>
+          <textarea id="message" name="message" placeholder="Superficie aproximada, plazos, referencias..." required></textarea>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn">Enviar consulta <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="form-note" id="formNote">Este formulario todavía no está conectado a un email — ver README.md para activarlo (Formspree, Resend, etc.).</p>
+      </form>
+
+      <div class="contact-info">
+        <div class="info-block">
+          <h4>Email</h4>
+          <p><a href="mailto:estudio@schlossberg.com">estudio@schlossberg.com</a></p>
+        </div>
+        <div class="info-block">
+          <h4>París</h4>
+          <p>48.8566° N, 2.3522° E<br>Dirección a confirmar</p>
+        </div>
+        <div class="info-block">
+          <h4>Buenos Aires</h4>
+          <p>34.6037° S, 58.3816° O<br>Dirección a confirmar</p>
+        </div>
+        <div class="info-block">
+          <h4>Punta del Este</h4>
+          <p>34.9583° S, 54.9506° O<br>Dirección a confirmar</p>
+        </div>
+        <div class="info-block">
+          <h4>Redes</h4>
+          <p><a href="#">Instagram</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <span class="footer-logo">Schlossberg</span>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Estudio</h4>
+          <a href="proyectos.html">Proyectos</a>
+          <a href="estudio.html">Estudio</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sedes</h4>
+          <p>París</p>
+          <p>Buenos Aires</p>
+          <p>Punta del Este</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:estudio@schlossberg.com">estudio@schlossberg.com</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Schlossberg. Todos los derechos reservados.</span>
+      <span>Arquitectura &amp; Interiorismo</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
