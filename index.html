@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Schlossberg — Arquitectura & Interiorismo</title>
-<meta name="description" content="Estudio de arquitectura e interiorismo con sede en París, Buenos Aires y Punta del Este. Proyectos residenciales y de hospitalidad en todo el mundo.">
+<meta name="description" content="Schlossberg es un estudio de arquitectura e interiorismo internacional. Proyectos residenciales y de hospitalidad en distintas ciudades del mundo.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav-logo">Schlossberg</a>
+<nav class="nav nav-minimal" id="nav">
+  <a href="index.html" class="nav-logo sr-only">Schlossberg</a>
   <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
     <li><a href="proyectos.html">Proyectos</a></li>
@@ -19,166 +19,26 @@
   </ul>
 </nav>
 
-<header class="hero">
-  <div class="hero-image">
-    <div class="ph"><span class="ph-label">Imagen destacada — reemplazar</span></div>
+<header class="hero hero-landing">
+  <!--
+    SLIDESHOW — reemplazar por tus imágenes/videos reales.
+    Cada .hero-slide es una diapositiva. Para una imagen:
+      <div class="hero-slide"><img src="assets/hero/foto-1.jpg" alt=""></div>
+    Para un video:
+      <div class="hero-slide"><video src="assets/hero/clip-1.mp4" autoplay muted loop playsinline></video></div>
+    El JS (js/script.js) las va alternando solo. Podés agregar o sacar diapositivas
+    libremente, no hace falta tocar el JS.
+  -->
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide is-active"><div class="ph"><span class="ph-label">Diapositiva 1 — reemplazar</span></div></div>
+    <div class="hero-slide"><div class="ph"><span class="ph-label">Diapositiva 2 — reemplazar</span></div></div>
+    <div class="hero-slide"><div class="ph"><span class="ph-label">Diapositiva 3 — reemplazar</span></div></div>
   </div>
   <div class="hero-scrim"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">Schlossberg</h1>
-    <p class="hero-sub">Arquitectura &amp; Interiorismo — París · Buenos Aires · Punta del Este</p>
+  <div class="hero-content hero-content-center">
+    <span class="logo-mark">Schlossberg</span>
   </div>
 </header>
-
-<!-- Signature element: the studio's three cities, read like coordinates on a site plan -->
-<div class="coords">
-  <div class="coords-track">
-    <div class="coords-item"><b>París</b><span>48.8566° N, 2.3522° E</span></div>
-    <div class="coords-item"><b>Buenos&nbsp;Aires</b><span>34.6037° S, 58.3816° O</span></div>
-    <div class="coords-item"><b>Punta&nbsp;del&nbsp;Este</b><span>34.9583° S, 54.9506° O</span></div>
-    <div class="coords-item"><b>Proyectos</b><span>en todo el mundo, a pedido</span></div>
-  </div>
-</div>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Obras seleccionadas</h2>
-      <p>Una selección de proyectos residenciales y de interiorismo entre Europa y Sudamérica.</p>
-    </div>
-
-    <div class="grid">
-      <article class="tile tile-a">
-        <a href="proyectos.html">
-          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
-          <div class="tile-cap">
-            <h3>Casa Retiro</h3>
-            <span class="meta">2024 — Punta del Este, Uruguay</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="tile tile-b">
-        <a href="proyectos.html">
-          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
-          <div class="tile-cap">
-            <h3>Appartement Marais</h3>
-            <span class="meta">2023 — París</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="tile tile-c">
-        <a href="proyectos.html">
-          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
-          <div class="tile-cap">
-            <h3>Casa Costanera</h3>
-            <span class="meta">2023 — Buenos Aires</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="tile tile-c">
-        <a href="proyectos.html">
-          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
-          <div class="tile-cap">
-            <h3>Villa José Ignacio</h3>
-            <span class="meta">2022 — José Ignacio, Uruguay</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="tile tile-a">
-        <a href="proyectos.html">
-          <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen del proyecto</span></div></div>
-          <div class="tile-cap">
-            <h3>Hôtel Particulier Le Marais</h3>
-            <span class="meta">2022 — París</span>
-          </div>
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight">
-  <div class="wrap">
-    <div class="split">
-      <div class="split-media">
-        <div class="tile-frame"><div class="ph"><span class="ph-label">Imagen de estudio</span></div></div>
-      </div>
-      <div class="split-text">
-        <p class="eyebrow">El estudio</p>
-        <h2>Una mirada entre continentes</h2>
-        <p>Schlossberg es un estudio de arquitectura e interiorismo con base en París, Buenos Aires y Punta del Este. Diseñamos casas, departamentos y espacios de hospitalidad para clientes en cualquier parte del mundo.</p>
-        <p>Cada proyecto parte del lugar: su luz, su clima y quienes lo van a habitar. El resultado son espacios serenos, atemporales y hechos a medida.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight">
-  <div class="wrap">
-    <div class="section-head" style="border:none; margin-bottom:0; padding-bottom:0;">
-      <h2>Presencia</h2>
-      <p>Tres estudios, un mismo lenguaje. Trabajamos con clientes en cualquier ciudad del mundo.</p>
-    </div>
-  </div>
-  <div class="wrap" style="padding:0;">
-    <div class="locations" style="margin-top:56px;">
-      <div>
-        <h3>París</h3>
-        <p>Residencial &amp; interiorismo en Francia y Europa continental.</p>
-      </div>
-      <div>
-        <h3>Buenos Aires</h3>
-        <p>Arquitectura residencial y de oficinas en Argentina.</p>
-      </div>
-      <div>
-        <h3>Punta del Este</h3>
-        <p>Casas de fin de semana y proyectos costeros en Uruguay.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap">
-    <h2>Empecemos tu proyecto</h2>
-    <a href="contacto.html" class="btn">Escribinos <span aria-hidden="true">→</span></a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <span class="footer-logo">Schlossberg</span>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Estudio</h4>
-          <a href="proyectos.html">Proyectos</a>
-          <a href="estudio.html">Estudio</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-        <div class="footer-col">
-          <h4>Sedes</h4>
-          <p>París</p>
-          <p>Buenos Aires</p>
-          <p>Punta del Este</p>
-        </div>
-        <div class="footer-col">
-          <h4>Contacto</h4>
-          <a href="mailto:estudio@schlossberg.com">estudio@schlossberg.com</a>
-          <a href="#">Instagram</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Schlossberg. Todos los derechos reservados.</span>
-      <span>Arquitectura &amp; Interiorismo</span>
-    </div>
-  </div>
-</footer>
 
 <script src="js/script.js"></script>
 </body>

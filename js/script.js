@@ -33,25 +33,6 @@ if(navToggle && navLinks){
   });
 }
 
-// Projects page: filter grid by city
-var filters = document.getElementById('filters');
-var grid = document.getElementById('grid');
-if(filters && grid){
-  var buttons = filters.querySelectorAll('button');
-  var tiles = grid.querySelectorAll('.tile');
-  filters.addEventListener('click', function(e){
-    var btn = e.target.closest('button');
-    if(!btn) return;
-    buttons.forEach(function(b){ b.classList.remove('is-active'); });
-    btn.classList.add('is-active');
-    var filter = btn.getAttribute('data-filter');
-    tiles.forEach(function(tile){
-      var show = filter === 'all' || tile.getAttribute('data-city') === filter;
-      tile.style.display = show ? '' : 'none';
-    });
-  });
-}
-
 // Contact form: placeholder submit handling.
 // Replace this with a real endpoint (Formspree, Resend, your own API route, etc.)
 // See README.md for setup instructions.
@@ -64,4 +45,16 @@ if(contactForm){
       note.textContent = 'Gracias — este formulario todavía no envía emails de verdad. Conectalo siguiendo el README.md.';
     }
   });
+}
+
+// Home hero slideshow: cycles through .hero-slide elements automatically.
+// Add or remove slides freely in the HTML — this reads whatever is there.
+var heroSlides = document.querySelectorAll('#heroSlides .hero-slide');
+if(heroSlides.length > 1){
+  var currentSlide = 0;
+  setInterval(function(){
+    heroSlides[currentSlide].classList.remove('is-active');
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('is-active');
+  }, 5000);
 }
