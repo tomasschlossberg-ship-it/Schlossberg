@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schlossberg — Arquitectura & Interiorismo</title>
-<meta name="description" content="Schlossberg es un estudio de arquitectura e interiorismo internacional. Proyectos residenciales y de hospitalidad en distintas ciudades del mundo.">
+<title>Schlossberg — Architecture & Design</title>
+<meta name="description" content="Schlossberg is an international architecture and interior design studio. Residential and hospitality projects around the world.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav class="nav nav-minimal" id="nav">
   <a href="index.html" class="nav-logo sr-only">Schlossberg</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span></button>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span class="nav-toggle-bars"><span></span><span></span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="proyectos.html">Proyectos</a></li>
-    <li><a href="estudio.html">Estudio</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+    <li><a href="proyectos.html">Projects</a></li>
+    <li><a href="estudio.html">Studio</a></li>
+    <li><a href="contacto.html">Contact</a></li>
   </ul>
 </nav>
 
 <header class="hero hero-landing">
   <!--
-    SLIDESHOW — reemplazar por tus imágenes/videos reales.
-    Cada .hero-slide es una diapositiva. Para una imagen:
-      <div class="hero-slide"><img src="assets/hero/foto-1.jpg" alt=""></div>
-    Para un video:
+    SLIDESHOW — swap these placeholders for your real photos/videos.
+    Each .hero-slide is one slide. For an image:
+      <div class="hero-slide"><img src="assets/hero/photo-1.jpg" alt=""></div>
+    For a video:
       <div class="hero-slide"><video src="assets/hero/clip-1.mp4" autoplay muted loop playsinline></video></div>
-    El JS (js/script.js) las va alternando solo. Podés agregar o sacar diapositivas
-    libremente, no hace falta tocar el JS.
+    js/script.js cycles them automatically — you don't need to touch the JS,
+    just add or remove .hero-slide blocks.
   -->
   <div class="hero-slides" id="heroSlides">
-    <div class="hero-slide is-active"><div class="ph"><span class="ph-label">Diapositiva 1 — reemplazar</span></div></div>
-    <div class="hero-slide"><div class="ph"><span class="ph-label">Diapositiva 2 — reemplazar</span></div></div>
-    <div class="hero-slide"><div class="ph"><span class="ph-label">Diapositiva 3 — reemplazar</span></div></div>
+    <div class="hero-slide is-active"><div class="ph"><span class="ph-label">Slide 1 — replace</span></div></div>
+    <div class="hero-slide"><div class="ph"><span class="ph-label">Slide 2 — replace</span></div></div>
+    <div class="hero-slide"><div class="ph"><span class="ph-label">Slide 3 — replace</span></div></div>
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-content hero-content-center">
-    <span class="logo-mark">Schlossberg</span>
+    <div class="logo-lockup">
+      <span class="logo-mark">Schlossberg</span>
+      <span class="logo-tagline">Architecture &amp; Design</span>
+    </div>
   </div>
 </header>
 

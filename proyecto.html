@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Schlossberg</title>
-<meta name="description" content="Schlossberg's work in Paris, Buenos Aires and Punta del Este.">
+<title id="pageTitle">Project — Schlossberg</title>
+<meta name="description" content="A Schlossberg project.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,18 +15,23 @@
     <span class="nav-toggle-bars"><span></span><span></span></span>
   </button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="proyectos.html" class="is-active">Projects</a></li>
+    <li><a href="proyectos.html">Projects</a></li>
     <li><a href="estudio.html">Studio</a></li>
     <li><a href="contacto.html">Contact</a></li>
   </ul>
 </nav>
 
-<main class="city-index">
-  <a href="proyectos-paris.html" class="city-link">Paris</a>
-  <a href="proyectos-buenos-aires.html" class="city-link">Buenos Aires</a>
-  <a href="proyectos-punta-del-este.html" class="city-link">Punta del Este</a>
-</main>
+<div class="project-head">
+  <a class="back-link" id="backLink" href="proyectos.html">← Back</a>
+  <h1 id="projectName">Loading…</h1>
+  <p class="meta" id="projectMeta"></p>
+</div>
 
+<div class="project-cover" id="projectCover"></div>
+
+<div class="project-gallery" id="projectGallery"></div>
+
+<script src="js/projects-data.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

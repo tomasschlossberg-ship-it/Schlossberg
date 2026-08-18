@@ -42,7 +42,7 @@ if(contactForm){
     e.preventDefault();
     var note = document.getElementById('formNote');
     if(note){
-      note.textContent = 'Gracias — este formulario todavía no envía emails de verdad. Conectalo siguiendo el README.md.';
+      note.textContent = "Thanks — this form doesn't send real emails yet. Connect it following README.md.";
     }
   });
 }
@@ -57,4 +57,40 @@ if(heroSlides.length > 1){
     currentSlide = (currentSlide + 1) % heroSlides.length;
     heroSlides[currentSlide].classList.add('is-active');
   }, 5000);
+}
+
+// Single-project gallery page (proyecto.html?slug=...).
+// Reads the project from projects-data.js and builds the page.
+// See js/projects-data.js to add/edit projects — nothing here needs editing.
+var projectCover = document.getElementById('projectCover');
+if(projectCover && window.SCHLOSSBERG_PROJECTS){
+  var slug = new URLSearchParams(window.location.search).get('slug');
+  var project = window.SCHLOSSBERG_PROJECTS.find(function(p){ return p.slug === slug; });
+
+  var nameEl = document.getElementById('projectName');
+  var metaEl = document.getElementById('projectMeta');
+  var backEl = document.getElementById('backLink');
+  var galleryEl = document.getElementById('projectGallery');
+  var titleEl = document.getElementById('pageTitle');
+
+  if(project){
+    if(titleEl) titleEl.textContent = project.name + ' — Schlossberg';
+    if(nameEl) nameEl.textContent = project.name;
+    if(metaEl) metaEl.textContent = project.year + ' — ' + project.city;
+    if(backEl){ backEl.href = project.cityPage; backEl.textContent = '← ' + project.city; }
+
+    projectCover.innerHTML = '<div class="ph"><span class="ph-label">Cover image — replace</span></div>';
+
+    if(galleryEl){
+      var html = '';
+      for(var i = 1; i <= project.images; i++){
+        html += '<div><div class="ph"><span class="ph-label">Image ' + i + ' — replace</span></div></div>';
+      }
+      galleryEl.innerHTML = html;
+    }
+  } else {
+    if(nameEl) nameEl.textContent = 'Project not found';
+    if(metaEl) metaEl.textContent = '';
+    projectCover.innerHTML = '';
+  }
 }
