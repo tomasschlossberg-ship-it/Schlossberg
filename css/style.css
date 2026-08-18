@@ -1,23 +1,28 @@
 /* ==========================================================================
    SCHLOSSBERG — Arquitectura & Interiorismo
-   Design tokens: warm paper bg, near-black ink, one soft stone grey.
-   Display face: Fraunces (serif, italic accents) — Utility face: Archivo.
+   Brand book v1.0 (mayo 2024): logotipo en Söhne Bold, tracking +10,
+   paleta exclusiva de negro (#000000) y blanco (#FFFFFF).
+   Söhne es de pago — usamos Switzer (Fontshare) como alternativa libre
+   de la misma familia de grotescas suizas. Cambiar es trivial: ver nota
+   junto al @import si más adelante compran licencia de Söhne.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap');
 
 :root{
-  --bg:        #FAF9F6;
-  --bg-alt:    #F1EFE9;
-  --ink:       #16150F;
-  --ink-soft:  #6B675C;
-  --line:      #DEDAD1;
-  --line-soft: #EAE7DF;
+  --bg:        #FFFFFF;
+  --bg-alt:    rgba(0,0,0,0.045);
+  --ink:       #000000;
+  --ink-soft:  rgba(0,0,0,0.6);
+  --line:      rgba(0,0,0,0.14);
+  --line-soft: rgba(0,0,0,0.08);
 
-  --serif:  'Fraunces', Georgia, serif;
-  --sans:   'Archivo', -apple-system, sans-serif;
+  /* Brand type: single family, two weights (mirrors Söhne Bold / Söhne Regular) */
+  --brand:  'Switzer', -apple-system, sans-serif;
+  --sans:   'Switzer', -apple-system, sans-serif;
 
   --tracked: 0.14em;
+  --logo-tracked: 0.01em; /* brand book: tracking +10 on the wordmark */
   --container: 1400px;
 
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -77,17 +82,16 @@ a:focus-visible, button:focus-visible{
   border-bottom:1px solid transparent;
 }
 .nav.is-scrolled{
-  background:rgba(250,249,246,0.92);
+  background:rgba(255,255,255,0.92);
   backdrop-filter:blur(8px);
   padding:18px 40px;
   border-bottom-color:var(--line);
 }
 .nav-logo{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:20px;
-  letter-spacing:0.02em;
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:19px;
+  letter-spacing:var(--logo-tracked);
 }
 .nav-links{
   display:flex;
@@ -129,7 +133,7 @@ a:focus-visible, button:focus-visible{
     transition:transform .45s var(--ease);
   }
   .nav-links.is-open{ transform:translateY(0); }
-  .nav-links a{ font-size:22px; font-family:var(--serif); font-style:italic; letter-spacing:0; text-transform:none; font-weight:400; }
+  .nav-links a{ font-size:22px; font-family:var(--brand); letter-spacing:0; text-transform:none; font-weight:600; }
   .nav-toggle{
     display:block;
     width:22px; height:14px;
@@ -154,15 +158,15 @@ a:focus-visible, button:focus-visible{
   position:relative;
   width:100%; height:100%;
   background:
-    linear-gradient(135deg, var(--bg-alt) 0%, #E7E3D9 100%);
+    linear-gradient(135deg, var(--bg-alt) 0%, rgba(0,0,0,0.09) 100%);
   overflow:hidden;
 }
 .ph::before{
   content:'';
   position:absolute; inset:0;
   background-image:
-    repeating-linear-gradient(0deg, rgba(22,21,15,0.035) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(90deg, rgba(22,21,15,0.035) 0 1px, transparent 1px 64px);
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 64px);
 }
 .ph-label{
   position:absolute;
@@ -189,20 +193,19 @@ a:focus-visible, button:focus-visible{
 .hero-image{ position:absolute; inset:0; }
 .hero-scrim{
   position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(22,21,15,0) 40%, rgba(22,21,15,0.55) 100%);
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
 }
 .hero-content{
   position:relative;
   padding:0 40px 56px;
-  color:#FAF9F6;
+  color:#FFFFFF;
 }
 .hero-title{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
+  font-family:var(--brand);
+  font-weight:700;
   font-size:clamp(48px, 9vw, 128px);
   line-height:0.95;
-  letter-spacing:-0.01em;
+  letter-spacing:var(--logo-tracked);
   opacity:0;
   transform:translateY(24px);
   animation:rise .9s var(--ease) .15s forwards;
@@ -245,8 +248,8 @@ a:focus-visible, button:focus-visible{
   color:var(--ink-soft);
 }
 .coords-item b{
-  font-family:var(--serif);
-  font-style:italic;
+  font-family:var(--brand);
+  font-weight:700;
   font-size:14px;
   color:var(--ink);
   letter-spacing:0;
@@ -268,10 +271,10 @@ a:focus-visible, button:focus-visible{
   border-bottom:1px solid var(--line);
 }
 .section-head h2{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:clamp(30px,4vw,48px);
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:clamp(28px,4vw,44px);
+  letter-spacing:var(--logo-tracked);
 }
 .section-head p{
   max-width:340px;
@@ -313,10 +316,9 @@ a:focus-visible, button:focus-visible{
   border-bottom:1px solid var(--line-soft);
 }
 .tile-cap h3{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:19px;
+  font-family:var(--brand);
+  font-weight:600;
+  font-size:18px;
 }
 .tile-cap .meta{
   font-size:11px;
@@ -345,11 +347,11 @@ a:focus-visible, button:focus-visible{
 .split-media .tile-frame{ aspect-ratio:4/5; }
 .split-text .eyebrow{ margin-bottom:20px; }
 .split-text h2{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:clamp(28px,3.4vw,42px);
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:clamp(26px,3.4vw,40px);
   line-height:1.15;
+  letter-spacing:var(--logo-tracked);
   margin-bottom:24px;
 }
 .split-text p{
@@ -379,10 +381,9 @@ a:focus-visible, button:focus-visible{
   padding:44px 36px;
 }
 .locations h3{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:26px;
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:24px;
   margin-bottom:10px;
 }
 .locations p{
@@ -403,10 +404,10 @@ a:focus-visible, button:focus-visible{
   border-top:1px solid var(--line);
 }
 .cta h2{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(32px,6vw,64px);
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:clamp(30px,6vw,60px);
+  letter-spacing:var(--logo-tracked);
   margin-bottom:32px;
 }
 .btn{
@@ -436,9 +437,10 @@ footer{
   padding-bottom:36px;
 }
 .footer-logo{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:22px;
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:var(--logo-tracked);
 }
 .footer-cols{
   display:flex;
@@ -480,11 +482,11 @@ footer{
 }
 .page-head .eyebrow{ margin-bottom:20px; }
 .page-head h1{
-  font-family:var(--serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:clamp(40px,7vw,84px);
+  font-family:var(--brand);
+  font-weight:700;
+  font-size:clamp(38px,7vw,80px);
   line-height:1;
+  letter-spacing:var(--logo-tracked);
 }
 .page-head p{
   margin-top:22px;
@@ -546,7 +548,7 @@ form{ display:flex; flex-direction:column; gap:22px; }
   outline:none;
   border-color:var(--ink);
 }
-.field input::placeholder, .field textarea::placeholder{ color:#B4AFA2; }
+.field input::placeholder, .field textarea::placeholder{ color:rgba(0,0,0,0.35); }
 .submit-row{ margin-top:8px; }
 .form-note{
   margin-top:18px;
