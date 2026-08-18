@@ -120,10 +120,8 @@ a:focus-visible, button:focus-visible{
   width:44px; height:44px;
   align-items:center;
   justify-content:center;
-  border-radius:50%;
   position:relative;
   z-index:101;
-  transition:background .25s var(--ease);
 }
 .nav-toggle-bars{ position:relative; display:inline-block; width:20px; height:12px; }
 .nav-toggle-bars span{
@@ -135,32 +133,32 @@ a:focus-visible, button:focus-visible{
 .nav-toggle.is-open .nav-toggle-bars span:nth-child(1){ transform:translateY(5.5px) rotate(45deg); }
 .nav-toggle.is-open .nav-toggle-bars span:nth-child(2){ transform:translateY(-5.5px) rotate(-45deg); }
 
-/* Minimal nav (home / landing page): only a menu button, top-left,
+/* Minimal nav (home / landing page): only a menu button, top-right,
    that opens a fullscreen overlay with the site links. No inline nav
    links, no wordmark in the bar — the logo lives in the hero itself.
-   The button sits over a photo/video, so it gets a soft dark chip
-   behind it for contrast, regardless of what's behind it. */
-.nav-minimal{ justify-content:flex-start; }
+   The button sits over a photo/video, so its lines get a soft drop
+   shadow for contrast — no solid chip behind it. */
+.nav-minimal{ justify-content:flex-end; }
 .nav-minimal .nav-logo{ display:none; }
-.nav-minimal .nav-toggle{
-  display:flex;
-  background:rgba(0,0,0,0.34);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
+.nav-minimal .nav-toggle{ display:flex; }
+.nav-minimal .nav-toggle-bars span{
+  background:#FFFFFF;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,0.55));
 }
-.nav-minimal .nav-toggle-bars span{ background:#FFFFFF; }
-.nav-minimal.is-scrolled .nav-toggle,
-.nav-minimal .nav-toggle.is-open{
-  background:rgba(255,255,255,0.92);
+.nav-minimal.is-scrolled .nav-toggle-bars span{
+  background:var(--ink);
+  filter:none;
 }
-.nav-minimal.is-scrolled .nav-toggle-bars span,
-.nav-minimal .nav-toggle.is-open .nav-toggle-bars span{ background:var(--ink); }
+.nav-minimal .nav-toggle.is-open .nav-toggle-bars span{
+  background:var(--ink);
+  filter:none;
+}
 
-/* Split nav (projects index / city pages): menu button top-left,
-   wordmark logo top-right, plain — used on white backgrounds. */
+/* Split nav (projects index / city pages / project pages): logo
+   top-left, menu button top-right — used on white backgrounds. */
 .nav-split{ justify-content:space-between; }
-.nav-split .nav-logo{ order:2; }
-.nav-split .nav-toggle{ order:1; display:flex; }
+.nav-split .nav-logo{ order:1; font-size:clamp(20px, 2.4vw, 27px); }
+.nav-split .nav-toggle{ order:2; display:flex; }
 
 .nav-minimal .nav-links,
 .nav-split .nav-links{
@@ -315,8 +313,7 @@ a:focus-visible, button:focus-visible{
   font-family:var(--brand);
   font-weight:700;
   font-size:clamp(40px, 7vw, 84px);
-  letter-spacing:0.03em;
-  text-transform:uppercase;
+  letter-spacing:0.01em;
 }
 .logo-tagline{
   font-family:var(--brand);
@@ -705,7 +702,7 @@ form{ display:flex; flex-direction:column; gap:22px; }
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:4px;
+  gap:clamp(36px, 6vw, 64px);
   padding:140px 24px 60px;
 }
 .city-link{
@@ -713,8 +710,8 @@ form{ display:flex; flex-direction:column; gap:22px; }
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:0.02em;
-  font-size:clamp(30px, 6.6vw, 68px);
-  line-height:1.18;
+  font-size:clamp(28px, 5.6vw, 58px);
+  line-height:1;
   color:var(--ink);
   transition:opacity .3s var(--ease);
 }
@@ -732,6 +729,10 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-row .tile-frame{ aspect-ratio:16/9; }
 .project-row .tile-cap{ border-bottom:none; padding-top:20px; }
 .project-row .tile-cap h3{ font-size:22px; }
+
+/* City pages start straight at the first project's cover — no heading —
+   so this just clears the fixed nav bar at the top. */
+.city-projects{ padding-top:120px; }
 
 /* ==========================================================================
    PROJECTS — single project gallery
