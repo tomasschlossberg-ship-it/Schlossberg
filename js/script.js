@@ -1,5 +1,5 @@
 // ==========================================================================
-// SCHLOSSBERG — shared site behavior
+// HOSS — shared site behavior
 // ==========================================================================
 
 // Footer year
@@ -63,9 +63,9 @@ if(heroSlides.length > 1){
 // Reads the project from projects-data.js and builds the page.
 // See js/projects-data.js to add/edit projects — nothing here needs editing.
 var projectCover = document.getElementById('projectCover');
-if(projectCover && window.SCHLOSSBERG_PROJECTS){
+if(projectCover && window.HOSS_PROJECTS){
   var slug = new URLSearchParams(window.location.search).get('slug');
-  var project = window.SCHLOSSBERG_PROJECTS.find(function(p){ return p.slug === slug; });
+  var project = window.HOSS_PROJECTS.find(function(p){ return p.slug === slug; });
 
   var nameEl = document.getElementById('projectName');
   var metaEl = document.getElementById('projectMeta');
@@ -74,7 +74,7 @@ if(projectCover && window.SCHLOSSBERG_PROJECTS){
   var titleEl = document.getElementById('pageTitle');
 
   if(project){
-    if(titleEl) titleEl.textContent = project.name + ' — Schlossberg';
+    if(titleEl) titleEl.textContent = project.name + ' — Hoss';
     if(nameEl) nameEl.textContent = project.name;
     if(metaEl) metaEl.textContent = project.year + ' — ' + project.city;
     if(backEl){ backEl.href = project.cityPage; backEl.textContent = '← ' + project.city; }

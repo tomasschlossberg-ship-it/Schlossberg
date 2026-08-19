@@ -1,5 +1,5 @@
 // ==========================================================================
-// SCHLOSSBERG — project data
+// HOSS — project data
 //
 // This is the ONLY place you need to edit to add, remove, or update a
 // project. Each entry becomes one row on its city page, and one gallery
@@ -21,7 +21,7 @@
 // it will automatically appear on its city page and get its own gallery.
 // ==========================================================================
 
-window.SCHLOSSBERG_PROJECTS = [
+window.HOSS_PROJECTS = [
   { slug: 'appartement-marais',            city: 'Paris',           cityPage: 'proyectos-paris.html',           name: 'Appartement Marais',            year: '2023', images: 5 },
   { slug: 'hotel-particulier-le-marais',   city: 'Paris',           cityPage: 'proyectos-paris.html',           name: 'Hôtel Particulier Le Marais',   year: '2022', images: 6 },
   { slug: 'loft-canal-saint-martin',       city: 'Paris',           cityPage: 'proyectos-paris.html',           name: 'Loft Canal Saint-Martin',       year: '2020', images: 4 },
