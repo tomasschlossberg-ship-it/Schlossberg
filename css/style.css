@@ -82,8 +82,7 @@ a:focus-visible, button:focus-visible{
   border-bottom:1px solid transparent;
 }
 .nav.is-scrolled{
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,0.97);
   padding:18px 40px;
   border-bottom-color:var(--line);
 }
@@ -323,10 +322,9 @@ a:focus-visible, button:focus-visible{
   display:block;
   height:clamp(40px, 7vw, 76px);
   width:auto;
-  /* Logo file has a white background — this blends it into light
-     hero imagery. Swap in a transparent-background version later
-     (see README) for it to work cleanly over any photo. */
-  mix-blend-mode:multiply;
+  /* Forces the (black) logo artwork to render in white, since it
+     sits over a photo/video with a dark scrim. */
+  filter:brightness(0) invert(1);
 }
 .logo-tagline{
   font-family:var(--brand);

@@ -76,8 +76,8 @@ if(projectCover && window.HOSS_PROJECTS){
   if(project){
     if(titleEl) titleEl.textContent = project.name + ' — Hoss';
     if(nameEl) nameEl.textContent = project.name;
-    if(metaEl) metaEl.textContent = project.year + ' — ' + project.city;
-    if(backEl){ backEl.href = project.cityPage; backEl.textContent = '← ' + project.city; }
+    if(metaEl) metaEl.textContent = project.year + ' — ' + project.category;
+    if(backEl){ backEl.href = project.categoryPage; backEl.textContent = '← ' + project.category; }
 
     projectCover.innerHTML = '<div class="ph"><span class="ph-label">Cover image — replace</span></div>';
 
