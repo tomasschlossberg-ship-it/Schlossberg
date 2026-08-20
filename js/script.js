@@ -102,18 +102,16 @@ if(galleryEl && window.HOSS_PROJECTS){
   // project's category page — no fade, just a direct jump, like
   // reaching the end of a project on luislaplace.com. Triggers once.
   if(project){
-    var scrollEnd = document.getElementById('scrollEnd');
-    if(scrollEnd && 'IntersectionObserver' in window){
-      var navigated = false;
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting && !navigated){
-            navigated = true;
-            window.location.href = project.categoryPage;
-          }
-        });
-      }, { threshold: 1.0 });
-      observer.observe(scrollEnd);
-    }
+    var navigated = false;
+    var checkScrollEnd = function(){
+      if(navigated) return;
+      var scrolledToBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
+      if(scrolledToBottom){
+        navigated = true;
+        window.removeEventListener('scroll', checkScrollEnd);
+        window.location.href = project.categoryPage;
+      }
+    };
+    window.addEventListener('scroll', checkScrollEnd, { passive: true });
   }
 }

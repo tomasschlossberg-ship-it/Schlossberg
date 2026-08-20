@@ -821,12 +821,12 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-row-overlay .overlay-title{
   font-family:var(--brand);
   font-weight:700;
-  font-size:clamp(48px, 7.5vw, 100px);
+  font-size:clamp(40px, 6.4vw, 84px);
 }
 .project-row-overlay .overlay-subtitle{
   font-family:var(--brand);
   font-weight:700;
-  font-size:clamp(48px, 7.5vw, 100px);
+  font-size:clamp(40px, 6.4vw, 84px);
 }
 
 /* ==========================================================================
@@ -846,7 +846,7 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-head .meta{
   margin-top:14px;
   font-family:var(--brand);
-  font-weight:500;
+  font-weight:700;
   font-size:clamp(32px,6vw,56px);
   color:var(--ink);
 }
