@@ -48,7 +48,7 @@ window.HOSS_PROJECTS = [
       'assets/projects/paris-5/01-living-beams-kitchen.jpg',
       'assets/projects/paris-5/02-living-shelf.jpg',
       'assets/projects/paris-5/03-kitchen-island.jpg',
-      'assets/projects/paris-5/04-kitchen-marble.jpg',
+      'assets/projects/paris-5/04-kitchen-marble-dark.jpg',
       'assets/projects/paris-5/05-hallway.jpg',
       'assets/projects/paris-5/06-bathroom.jpg',
       'assets/projects/paris-5/07-bedroom.jpg'
