@@ -825,8 +825,8 @@ form{ display:flex; flex-direction:column; gap:22px; }
 }
 .project-row-overlay .overlay-subtitle{
   font-family:var(--brand);
-  font-weight:500;
-  font-size:clamp(20px, 2.6vw, 32px);
+  font-weight:700;
+  font-size:clamp(48px, 7.5vw, 100px);
 }
 
 /* ==========================================================================
@@ -841,13 +841,14 @@ form{ display:flex; flex-direction:column; gap:22px; }
   font-weight:700;
   font-size:clamp(32px,6vw,56px);
   letter-spacing:var(--logo-tracked);
+  color:var(--ink);
 }
 .project-head .meta{
   margin-top:14px;
   font-family:var(--brand);
   font-weight:500;
-  font-size:clamp(18px,2.4vw,26px);
-  color:var(--ink-soft);
+  font-size:clamp(32px,6vw,56px);
+  color:var(--ink);
 }
 .project-cover{
   width:100%;

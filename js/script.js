@@ -98,10 +98,9 @@ if(galleryEl && window.HOSS_PROJECTS){
     if(metaEl) metaEl.textContent = '';
   }
 
-  // Scrolling past the end of the gallery takes you back to this
-  // project's category page — like reaching the end of a project on
-  // luislaplace.com. Triggers once, with a short delay so it reads as
-  // an intentional transition rather than an accidental jump.
+  // Scrolling past the end of the gallery takes you straight to this
+  // project's category page — no fade, just a direct jump, like
+  // reaching the end of a project on luislaplace.com. Triggers once.
   if(project){
     var scrollEnd = document.getElementById('scrollEnd');
     if(scrollEnd && 'IntersectionObserver' in window){
@@ -110,11 +109,7 @@ if(galleryEl && window.HOSS_PROJECTS){
         entries.forEach(function(entry){
           if(entry.isIntersecting && !navigated){
             navigated = true;
-            document.body.style.transition = 'opacity .4s ease';
-            document.body.style.opacity = '0';
-            setTimeout(function(){
-              window.location.href = project.categoryPage;
-            }, 400);
+            window.location.href = project.categoryPage;
           }
         });
       }, { threshold: 1.0 });
