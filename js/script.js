@@ -98,15 +98,18 @@ if(galleryEl && window.HOSS_PROJECTS){
     if(metaEl) metaEl.textContent = '';
   }
 
-  // Scrolling past the end of the gallery takes you straight to this
-  // project's category page — no fade, just a direct jump, like
-  // reaching the end of a project on luislaplace.com. Triggers once.
+  // Scrolling past the end of the gallery takes you to this project's
+  // category page. Triggers a bit before the hard bottom of the page
+  // (while there's still scroll momentum) so the jump reads as a
+  // continuation of the scroll rather than a stop-then-jump — no
+  // fade, since that read as slower/heavier than the scroll itself.
   if(project){
     var navigated = false;
+    var TRIGGER_MARGIN = 200; // px before the true bottom
     var checkScrollEnd = function(){
       if(navigated) return;
-      var scrolledToBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
-      if(scrolledToBottom){
+      var scrolledNearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - TRIGGER_MARGIN);
+      if(scrolledNearBottom){
         navigated = true;
         window.removeEventListener('scroll', checkScrollEnd);
         window.location.href = project.categoryPage;
