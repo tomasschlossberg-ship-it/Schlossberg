@@ -85,6 +85,16 @@ if(galleryEl && window.HOSS_PROJECTS){
       metaEl.textContent = project.location || '';
     }
 
+    // Optional vertical video, above the gallery grid.
+    var videoEl = document.getElementById('projectVideo');
+    if(videoEl){
+      if(project.video){
+        videoEl.innerHTML = '<video src="' + project.video + '" controls playsinline loop preload="metadata"></video>';
+      } else {
+        videoEl.innerHTML = '';
+      }
+    }
+
     // Gallery: real photos if supplied, otherwise placeholder tiles
     // based on the "images" count. The cover image (used as the
     // clickable thumbnail on the category page) is intentionally not

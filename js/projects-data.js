@@ -17,6 +17,10 @@
 //   A) You HAVE real photos:
 //      cover    path to the cover image, e.g. 'assets/projects/paris-5/cover.jpg'
 //      gallery  array of image paths for the gallery grid
+//      video    optional — path to a vertical video, shown full-size
+//               above the gallery grid, no cropping/letterboxing.
+//               Keep it an .mp4 (H.264) for the widest browser support —
+//               a .mov from an iPhone needs converting first.
 //
 //   B) You DON'T have photos yet:
 //      images   how many placeholder gallery tiles to generate.
@@ -39,6 +43,7 @@ window.HOSS_PROJECTS = [
     location: 'Jardin des Plantes',
     year: 'TBD',
     cover: 'assets/projects/paris-5/cover.jpg',
+    video: 'assets/projects/paris-5/video.mp4',
     gallery: [
       'assets/projects/paris-5/01-living-beams-kitchen.jpg',
       'assets/projects/paris-5/02-living-shelf.jpg',
