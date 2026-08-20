@@ -89,7 +89,7 @@ if(galleryEl && window.HOSS_PROJECTS){
     var videoEl = document.getElementById('projectVideo');
     if(videoEl){
       if(project.video){
-        videoEl.innerHTML = '<video src="' + project.video + '" controls playsinline autoplay muted loop preload="auto"></video>';
+        videoEl.innerHTML = '<video src="' + project.video + '" playsinline autoplay muted loop preload="auto"></video>';
       } else {
         videoEl.innerHTML = '';
       }
