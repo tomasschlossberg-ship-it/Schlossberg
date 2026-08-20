@@ -821,12 +821,12 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-row-overlay .overlay-title{
   font-family:var(--brand);
   font-weight:700;
-  font-size:clamp(28px, 4vw, 44px);
+  font-size:clamp(48px, 7.5vw, 100px);
 }
 .project-row-overlay .overlay-subtitle{
   font-family:var(--brand);
   font-weight:500;
-  font-size:clamp(14px, 1.6vw, 18px);
+  font-size:clamp(20px, 2.6vw, 32px);
 }
 
 /* ==========================================================================
@@ -834,17 +834,8 @@ form{ display:flex; flex-direction:column; gap:22px; }
    ========================================================================== */
 .project-head{
   padding:160px 40px 48px;
+  text-align:center;
 }
-.project-head .back-link{
-  display:inline-block;
-  margin-bottom:28px;
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:var(--tracked);
-  text-transform:uppercase;
-  color:var(--ink-soft);
-}
-.project-head .back-link:hover{ color:var(--ink); }
 .project-head h1{
   font-family:var(--brand);
   font-weight:700;
@@ -853,9 +844,9 @@ form{ display:flex; flex-direction:column; gap:22px; }
 }
 .project-head .meta{
   margin-top:14px;
-  font-size:12px;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
+  font-family:var(--brand);
+  font-weight:500;
+  font-size:clamp(18px,2.4vw,26px);
   color:var(--ink-soft);
 }
 .project-cover{
@@ -879,11 +870,3 @@ form{ display:flex; flex-direction:column; gap:22px; }
   .project-gallery{ grid-template-columns:1fr; }
   .project-gallery > div:nth-child(3n+1){ grid-column:span 1; }
 }
-
-/* "More from [category]" — the gallery flows into the rest of the
-   category on scroll, instead of forcing a jump back. */
-.more-projects{
-  padding:80px 0 120px;
-  border-top:1px solid var(--line);
-}
-.more-projects .studio-section-head{ margin-bottom:48px; }

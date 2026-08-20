@@ -62,83 +62,63 @@ if(heroSlides.length > 1){
 // Single-project gallery page (proyecto.html?slug=...).
 // Reads the project from projects-data.js and builds the page.
 // See js/projects-data.js to add/edit projects — nothing here needs editing.
-var projectCover = document.getElementById('projectCover');
-if(projectCover && window.HOSS_PROJECTS){
+var galleryEl = document.getElementById('projectGallery');
+if(galleryEl && window.HOSS_PROJECTS){
   var slug = new URLSearchParams(window.location.search).get('slug');
   var project = window.HOSS_PROJECTS.find(function(p){ return p.slug === slug; });
 
   var nameEl = document.getElementById('projectName');
   var metaEl = document.getElementById('projectMeta');
-  var backEl = document.getElementById('backLink');
-  var galleryEl = document.getElementById('projectGallery');
   var titleEl = document.getElementById('pageTitle');
 
   if(project){
     if(titleEl) titleEl.textContent = project.name + ' — Hoss';
     if(nameEl) nameEl.textContent = project.name;
     if(metaEl){
-      var metaText = project.year + ' — ' + project.category;
-      if(project.location) metaText += ' — ' + project.location;
-      metaEl.textContent = metaText;
-    }
-    if(backEl){ backEl.href = project.categoryPage; backEl.textContent = '← ' + project.category; }
-
-    // Cover: real photo if supplied, otherwise a placeholder.
-    if(project.cover){
-      projectCover.innerHTML = '<img src="' + project.cover + '" alt="' + project.name + '">';
-    } else {
-      projectCover.innerHTML = '<div class="ph"><span class="ph-label">Cover image — replace</span></div>';
+      metaEl.textContent = project.location || '';
     }
 
     // Gallery: real photos if supplied, otherwise placeholder tiles
-    // based on the "images" count.
-    if(galleryEl){
-      var html = '';
-      if(project.gallery && project.gallery.length){
-        project.gallery.forEach(function(src){
-          html += '<div><img src="' + src + '" alt="' + project.name + '"></div>';
-        });
-      } else {
-        for(var i = 1; i <= (project.images || 0); i++){
-          html += '<div><div class="ph"><span class="ph-label">Image ' + i + ' — replace</span></div></div>';
-        }
+    // based on the "images" count. The cover image (used as the
+    // clickable thumbnail on the category page) is intentionally not
+    // repeated here.
+    var html = '';
+    if(project.gallery && project.gallery.length){
+      project.gallery.forEach(function(src){
+        html += '<div><img src="' + src + '" alt="' + project.name + '"></div>';
+      });
+    } else {
+      for(var i = 1; i <= (project.images || 0); i++){
+        html += '<div><div class="ph"><span class="ph-label">Image ' + i + ' — replace</span></div></div>';
       }
-      galleryEl.innerHTML = html;
     }
+    galleryEl.innerHTML = html;
   } else {
     if(nameEl) nameEl.textContent = 'Project not found';
     if(metaEl) metaEl.textContent = '';
-    projectCover.innerHTML = '';
   }
 
-  // "More from [category]" — flows the gallery straight into the rest
-  // of the category instead of forcing an auto-scroll.
+  // Scrolling past the end of the gallery takes you back to this
+  // project's category page — like reaching the end of a project on
+  // luislaplace.com. Triggers once, with a short delay so it reads as
+  // an intentional transition rather than an accidental jump.
   if(project){
-    var moreGrid = document.getElementById('moreProjectsGrid');
-    var moreTitle = document.getElementById('moreProjectsTitle');
-    var moreSection = document.getElementById('moreProjectsSection');
-    var others = window.HOSS_PROJECTS.filter(function(p){
-      return p.category === project.category && p.slug !== project.slug;
-    });
-
-    if(moreTitle) moreTitle.textContent = 'More ' + project.category;
-
-    if(others.length && moreGrid){
-      var moreHtml = '';
-      others.forEach(function(p, i){
-        var img = p.cover ? '<img src="' + p.cover + '" alt="' + p.name + '">' : '<div class="ph"><span class="ph-label">Cover image</span></div>';
-        var tileClass = others.length === 1 ? 'tile-a' : (i % 2 === 0 ? 'tile-c' : 'tile-b');
-        moreHtml += '<article class="tile ' + tileClass + '">' +
-          '<a href="proyecto.html?slug=' + p.slug + '">' +
-          '<div class="tile-frame">' + img + '</div>' +
-          '<div class="tile-cap"><h3>' + p.name + '</h3><span class="meta">' + p.year + '</span></div>' +
-          '</a></article>';
-      });
-      moreGrid.innerHTML = moreHtml;
-    } else if(moreSection){
-      // No other projects in this category yet — hide the section
-      // rather than show an empty grid.
-      moreSection.style.display = 'none';
+    var scrollEnd = document.getElementById('scrollEnd');
+    if(scrollEnd && 'IntersectionObserver' in window){
+      var navigated = false;
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting && !navigated){
+            navigated = true;
+            document.body.style.transition = 'opacity .4s ease';
+            document.body.style.opacity = '0';
+            setTimeout(function(){
+              window.location.href = project.categoryPage;
+            }, 400);
+          }
+        });
+      }, { threshold: 1.0 });
+      observer.observe(scrollEnd);
     }
   }
 }
