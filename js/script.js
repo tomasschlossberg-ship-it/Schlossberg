@@ -2,62 +2,69 @@
 // HOSS — shared site behavior
 // ==========================================================================
 
-// Footer year
-document.querySelectorAll('#year').forEach(function(el){
-  el.textContent = new Date().getFullYear();
-});
-
-// Nav: solid background after scrolling past the hero
-var nav = document.getElementById('nav');
-function onScroll(){
-  if(!nav) return;
-  if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
-  else{ nav.classList.remove('is-scrolled'); }
-}
-window.addEventListener('scroll', onScroll, { passive:true });
-onScroll();
-
-// Mobile nav toggle
-var navToggle = document.getElementById('navToggle');
-var navLinks = document.getElementById('navLinks');
-if(navToggle && navLinks){
-  navToggle.addEventListener('click', function(){
-    navToggle.classList.toggle('is-open');
-    navLinks.classList.toggle('is-open');
+// Everything that needs to (re)run whenever the page's markup is in place —
+// including after the PJAX-style swap at the bottom of a project gallery,
+// which replaces the page content without a real navigation.
+function hossInit(){
+  // Footer year
+  document.querySelectorAll('#year').forEach(function(el){
+    el.textContent = new Date().getFullYear();
   });
-  navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      navToggle.classList.remove('is-open');
-      navLinks.classList.remove('is-open');
+
+  // Nav: solid background after scrolling past the hero
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(!nav) return;
+    if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
+    else{ nav.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      navToggle.classList.toggle('is-open');
+      navLinks.classList.toggle('is-open');
     });
-  });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navToggle.classList.remove('is-open');
+        navLinks.classList.remove('is-open');
+      });
+    });
+  }
+
+  // Contact form: placeholder submit handling.
+  // Replace this with a real endpoint (Formspree, Resend, your own API route, etc.)
+  // See README.md for setup instructions.
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var note = document.getElementById('formNote');
+      if(note){
+        note.textContent = "Thanks — this form doesn't send real emails yet. Connect it following README.md.";
+      }
+    });
+  }
+
+  // Home hero slideshow: cycles through .hero-slide elements automatically.
+  // Add or remove slides freely in the HTML — this reads whatever is there.
+  var heroSlides = document.querySelectorAll('#heroSlides .hero-slide');
+  if(heroSlides.length > 1){
+    var currentSlide = 0;
+    setInterval(function(){
+      heroSlides[currentSlide].classList.remove('is-active');
+      currentSlide = (currentSlide + 1) % heroSlides.length;
+      heroSlides[currentSlide].classList.add('is-active');
+    }, 5000);
+  }
 }
 
-// Contact form: placeholder submit handling.
-// Replace this with a real endpoint (Formspree, Resend, your own API route, etc.)
-// See README.md for setup instructions.
-var contactForm = document.getElementById('contactForm');
-if(contactForm){
-  contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var note = document.getElementById('formNote');
-    if(note){
-      note.textContent = "Thanks — this form doesn't send real emails yet. Connect it following README.md.";
-    }
-  });
-}
-
-// Home hero slideshow: cycles through .hero-slide elements automatically.
-// Add or remove slides freely in the HTML — this reads whatever is there.
-var heroSlides = document.querySelectorAll('#heroSlides .hero-slide');
-if(heroSlides.length > 1){
-  var currentSlide = 0;
-  setInterval(function(){
-    heroSlides[currentSlide].classList.remove('is-active');
-    currentSlide = (currentSlide + 1) % heroSlides.length;
-    heroSlides[currentSlide].classList.add('is-active');
-  }, 5000);
-}
+hossInit();
 
 // Single-project gallery page (proyecto.html?slug=...).
 // Reads the project from projects-data.js and builds the page.
@@ -99,22 +106,61 @@ if(galleryEl && window.HOSS_PROJECTS){
   }
 
   // Scrolling past the end of the gallery takes you to this project's
-  // category page. Triggers a bit before the hard bottom of the page
-  // (while there's still scroll momentum) so the jump reads as a
-  // continuation of the scroll rather than a stop-then-jump — no
-  // fade, since that read as slower/heavier than the scroll itself.
+  // category page. Instead of a normal browser navigation (which always
+  // has a hard flash, no matter how the trigger is timed), the category
+  // page is fetched in the background as soon as this page loads, so by
+  // the time you reach the bottom there's no network wait — the swap is
+  // just a quick, contained crossfade rather than a full reload.
+  //
+  // Note: this fetch requires the site to be served over http/https
+  // (e.g. on Vercel) — it won't work if you open the .html file directly
+  // from disk. Regular link clicks (nav, footer, etc.) are untouched and
+  // always work normally either way.
   if(project){
+    var categoryUrl = project.categoryPage;
+    var prefetchPromise = fetch(categoryUrl).then(function(res){
+      return res.ok ? res.text() : null;
+    }).catch(function(){ return null; });
+
     var navigated = false;
-    var TRIGGER_MARGIN = 200; // px before the true bottom
+    var TRIGGER_MARGIN = 250; // px before the true bottom
     var checkScrollEnd = function(){
       if(navigated) return;
       var scrolledNearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - TRIGGER_MARGIN);
       if(scrolledNearBottom){
         navigated = true;
         window.removeEventListener('scroll', checkScrollEnd);
-        window.location.href = project.categoryPage;
+        prefetchPromise.then(function(html){
+          if(html){
+            swapToCategory(html, categoryUrl);
+          } else {
+            window.location.href = categoryUrl; // fallback if the fetch failed
+          }
+        });
       }
     };
     window.addEventListener('scroll', checkScrollEnd, { passive: true });
   }
+}
+
+// Swaps the current page's content for an already-fetched page's content,
+// with a quick crossfade — no network wait, no white flash.
+function swapToCategory(html, url){
+  var doc = new DOMParser().parseFromString(html, 'text/html');
+  document.body.style.transition = 'opacity .22s ease';
+  document.body.style.opacity = '0';
+  setTimeout(function(){
+    document.title = doc.title;
+    document.body.innerHTML = doc.body.innerHTML;
+    document.body.style.opacity = '0';
+    window.scrollTo(0, 0);
+    history.pushState({}, '', url);
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        document.body.style.transition = 'opacity .22s ease';
+        document.body.style.opacity = '1';
+      });
+    });
+    hossInit();
+  }, 220);
 }
