@@ -738,7 +738,9 @@ form{ display:flex; flex-direction:column; gap:22px; }
    STUDIO — Laplace-style image-led sections
    ========================================================================== */
 .studio-intro{ padding-top:160px; }
-.studio-intro .tile-frame{ aspect-ratio:16/9; margin-bottom:40px; }
+.studio-intro .tile-frame{ margin-bottom:40px; }
+.tile-frame-natural{ aspect-ratio:auto; }
+.tile-frame-natural img{ width:100%; height:auto; object-fit:initial; }
 .studio-intro p{
   max-width:60ch;
   font-size:16px;
