@@ -134,7 +134,7 @@ if(galleryEl && window.HOSS_PROJECTS){
     }).catch(function(){ return null; });
 
     var navigated = false;
-    var TRIGGER_MARGIN = 250; // px before the true bottom
+    var TRIGGER_MARGIN = 4; // px before the true bottom — only fires once you've actually reached the end
     var checkScrollEnd = function(){
       if(navigated) return;
       var scrolledNearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - TRIGGER_MARGIN);

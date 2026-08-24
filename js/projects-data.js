@@ -101,7 +101,16 @@ window.HOSS_PROJECTS = [
     pending: true
   },
 
-  { slug: 'joyeria-mexicana-paris', category: 'Commercial', categoryPage: 'proyectos-commercial.html', name: 'Boutique de Joyería Mexicana, París', year: 'TBD', images: 6 },
+  {
+    slug: 'paris-6',
+    category: 'Commercial',
+    categoryPage: 'proyectos-commercial.html',
+    name: 'Paris 6',
+    location: 'LAZO Store',
+    year: 'TBD',
+    overlayCover: true,
+    pending: true
+  },
 
   {
     slug: 'pilar-clubhouse-azzurra',

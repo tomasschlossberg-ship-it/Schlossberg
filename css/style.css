@@ -912,6 +912,11 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-gallery > div:nth-child(3n+1){ grid-column:span 2; }
 .project-gallery > div:nth-child(3n+1) .ph,
 .project-gallery > div:nth-child(3n+1) img{ aspect-ratio:16/9; }
+/* If the last image would otherwise be alone in its row (no pair),
+   give it the full width instead of leaving it small and isolated. */
+.project-gallery > div:last-child:nth-child(3n+2){ grid-column:span 2; }
+.project-gallery > div:last-child:nth-child(3n+2) .ph,
+.project-gallery > div:last-child:nth-child(3n+2) img{ aspect-ratio:16/9; }
 @media (max-width:720px){
   .project-gallery{ grid-template-columns:1fr; }
   .project-gallery > div:nth-child(3n+1){ grid-column:span 1; }
