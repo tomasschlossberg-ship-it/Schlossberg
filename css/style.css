@@ -831,6 +831,29 @@ form{ display:flex; flex-direction:column; gap:22px; }
   font-size:clamp(40px, 6.4vw, 84px);
 }
 
+/* Small badge for covers without real photos yet (pending / under
+   construction) — sits in a corner, doesn't compete with the title. */
+.row-overlay-badge{
+  position:absolute;
+  bottom:20px;
+  right:24px;
+  font-family:var(--brand);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:#FFFFFF;
+  background:rgba(0,0,0,0.4);
+  padding:8px 14px;
+  border-radius:2px;
+}
+/* Pending covers have no photo — a neutral placeholder background
+   instead of an <img>. */
+.project-row-overlay .tile-frame.is-pending{
+  background:
+    linear-gradient(135deg, var(--bg-alt) 0%, rgba(0,0,0,0.09) 100%);
+}
+
 /* ==========================================================================
    PROJECTS — single project gallery
    ========================================================================== */

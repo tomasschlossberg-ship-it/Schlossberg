@@ -96,14 +96,15 @@ if(galleryEl && window.HOSS_PROJECTS){
     }
 
     // Gallery: real photos if supplied, otherwise placeholder tiles
-    // based on the "images" count. The cover image (used as the
-    // clickable thumbnail on the category page) is intentionally not
-    // repeated here.
+    // based on the "images" count, or a "pending" note if the project
+    // has no photos yet at all.
     var html = '';
     if(project.gallery && project.gallery.length){
       project.gallery.forEach(function(src){
         html += '<div><img src="' + src + '" alt="' + project.name + '"></div>';
       });
+    } else if(project.pending){
+      html = '<p style="grid-column:1/-1; text-align:center; padding:80px 0; color:var(--ink-soft); font-size:15px;">Images for this project are pending.</p>';
     } else {
       for(var i = 1; i <= (project.images || 0); i++){
         html += '<div><div class="ph"><span class="ph-label">Image ' + i + ' — replace</span></div></div>';

@@ -9,22 +9,30 @@
 //   slug         unique id used in the URL, e.g. proyecto.html?slug=paris-5
 //   category     "Residential" | "Commercial" | "Hospitality"
 //   categoryPage the HTML file for that category's list
-//   name         project name shown on the page
+//   name         project name shown on the page (and, for overlay-style
+//                covers, the big title on the image)
+//   location     optional — shown under the name (as the subtitle on
+//                overlay-style covers, and next to the category on the
+//                gallery page)
 //   year         shown next to the name — fill in the real year, "TBD" for now
 //
-//   Two ways to supply photos for a project:
+//   Photos — three ways to supply them:
 //
-//   A) You HAVE real photos:
-//      cover    path to the cover image, e.g. 'assets/projects/paris-5/cover.jpg'
+//   A) You HAVE real photos, want a plain cover tile:
+//      cover    path to the cover image
 //      gallery  array of image paths for the gallery grid
-//      video    optional — path to a vertical video, shown full-size
-//               above the gallery grid, no cropping/letterboxing.
-//               Keep it an .mp4 (H.264) for the widest browser support —
-//               a .mov from an iPhone needs converting first.
 //
-//   B) You DON'T have photos yet:
-//      images   how many placeholder gallery tiles to generate.
-//      (omit "cover"/"gallery" — proyecto.html falls back to placeholders)
+//   B) You HAVE real photos, want the Paris-5-style cover with the
+//      name/location overlaid in white on the image itself:
+//      cover, gallery — same as above, PLUS:
+//      overlayCover: true
+//
+//   C) You DON'T have photos yet:
+//      pending: true            — cover shows "Pending images"
+//      underConstruction: true  — cover shows "Project under construction"
+//      (use one or the other, not both; omit cover/gallery/images)
+//      images   optional — how many placeholder tiles the gallery page
+//               shows if you DO want placeholders instead of a pending note
 //
 // To add a project: copy one block below, change the values, done —
 // it will automatically appear on its category page and get its own
@@ -33,7 +41,33 @@
 // ==========================================================================
 
 window.HOSS_PROJECTS = [
-  { slug: 'casa-en-barrio-privado', category: 'Residential', categoryPage: 'proyectos-residential.html', name: 'Casa en Barrio Privado', year: 'TBD', images: 6 },
+  {
+    slug: 'pilar-casa-el-arroyo',
+    category: 'Residential',
+    categoryPage: 'proyectos-residential.html',
+    name: 'Pilar - Buenos Aires',
+    location: 'Casa el Arroyo',
+    year: 'TBD',
+    overlayCover: true,
+    cover: 'assets/projects/pilar-casa-el-arroyo/cover.jpg',
+    gallery: [
+      'assets/projects/pilar-casa-el-arroyo/01.jpg',
+      'assets/projects/pilar-casa-el-arroyo/02.jpg',
+      'assets/projects/pilar-casa-el-arroyo/03.jpg',
+      'assets/projects/pilar-casa-el-arroyo/04.jpg',
+      'assets/projects/pilar-casa-el-arroyo/05.jpg',
+      'assets/projects/pilar-casa-el-arroyo/06.jpg',
+      'assets/projects/pilar-casa-el-arroyo/07.jpg',
+      'assets/projects/pilar-casa-el-arroyo/08.jpg',
+      'assets/projects/pilar-casa-el-arroyo/09.jpg',
+      'assets/projects/pilar-casa-el-arroyo/10.jpg',
+      'assets/projects/pilar-casa-el-arroyo/11.jpg',
+      'assets/projects/pilar-casa-el-arroyo/12.jpg',
+      'assets/projects/pilar-casa-el-arroyo/13.jpg',
+      'assets/projects/pilar-casa-el-arroyo/14.jpg',
+      'assets/projects/pilar-casa-el-arroyo/15.jpg'
+    ]
+  },
 
   {
     slug: 'paris-5',
@@ -42,6 +76,7 @@ window.HOSS_PROJECTS = [
     name: 'Paris 5',
     location: 'Jardin des Plantes',
     year: 'TBD',
+    overlayCover: true,
     cover: 'assets/projects/paris-5/cover.jpg',
     video: 'assets/projects/paris-5/video.mp4',
     gallery: [
@@ -55,9 +90,35 @@ window.HOSS_PROJECTS = [
     ]
   },
 
-  { slug: 'apartamento-paris-ii', category: 'Residential', categoryPage: 'proyectos-residential.html', name: 'Apartamento en París II', year: 'TBD', images: 5 },
+  {
+    slug: 'paris-20',
+    category: 'Residential',
+    categoryPage: 'proyectos-residential.html',
+    name: 'Paris 20',
+    location: 'Cimetière du Père-Lachaise',
+    year: 'TBD',
+    overlayCover: true,
+    pending: true
+  },
 
   { slug: 'joyeria-mexicana-paris', category: 'Commercial', categoryPage: 'proyectos-commercial.html', name: 'Boutique de Joyería Mexicana, París', year: 'TBD', images: 6 },
 
-  { slug: 'clubhouse', category: 'Hospitality', categoryPage: 'proyectos-hospitality.html', name: 'Clubhouse', year: 'TBD', images: 6 }
+  {
+    slug: 'pilar-clubhouse-azzurra',
+    category: 'Hospitality',
+    categoryPage: 'proyectos-hospitality.html',
+    name: 'Pilar - Buenos Aires',
+    location: 'Club House Azzurra',
+    year: 'TBD',
+    overlayCover: true,
+    underConstruction: true,
+    cover: 'assets/projects/pilar-clubhouse-azzurra/cover.jpg',
+    gallery: [
+      'assets/projects/pilar-clubhouse-azzurra/01.jpg',
+      'assets/projects/pilar-clubhouse-azzurra/02.jpg',
+      'assets/projects/pilar-clubhouse-azzurra/03.jpg',
+      'assets/projects/pilar-clubhouse-azzurra/04.jpg',
+      'assets/projects/pilar-clubhouse-azzurra/05.jpg'
+    ]
+  }
 ];
