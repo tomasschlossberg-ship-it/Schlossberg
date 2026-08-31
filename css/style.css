@@ -48,6 +48,9 @@ button{ font-family:inherit; background:none; border:none; cursor:pointer; color
   margin:0 auto;
   padding:0 40px;
 }
+@media (max-width:480px){
+  .wrap{ padding:0 20px; }
+}
 
 .eyebrow{
   font-family:var(--sans);
@@ -212,6 +215,11 @@ a:focus-visible, button:focus-visible{
   .nav-links.is-open{ transform:translateY(0); }
   .nav-links a{ font-size:22px; font-family:var(--brand); letter-spacing:0; text-transform:none; font-weight:600; }
   .nav-toggle{ display:flex; }
+  /* Match the classic-nav mobile menu's letter case (mixed case, not
+     uppercase) so it's consistent across pages on phones — desktop is
+     untouched. */
+  .nav-minimal .nav-links a,
+  .nav-split .nav-links a{ text-transform:none; }
 }
 
 /* ==========================================================================
@@ -608,6 +616,9 @@ footer{
   padding:180px 40px 64px;
   border-bottom:1px solid var(--line);
 }
+@media (max-width:480px){
+  .page-head{ padding:150px 20px 48px; }
+}
 .page-head .eyebrow{ margin-bottom:20px; }
 .page-head h1{
   font-family:var(--brand);
@@ -830,6 +841,11 @@ form{ display:flex; flex-direction:column; gap:22px; }
   font-weight:700;
   font-size:clamp(40px, 6.4vw, 84px);
 }
+@media (max-width:480px){
+  .project-row-overlay .row-overlay-text{ padding:16px; gap:4px; }
+  .project-row-overlay .overlay-title,
+  .project-row-overlay .overlay-subtitle{ font-size:7.2vw; line-height:1.15; }
+}
 
 /* Small badge for covers without real photos yet (pending / under
    construction) — sits in a corner, doesn't compete with the title. */
@@ -860,6 +876,9 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-head{
   padding:160px 40px 48px;
   text-align:center;
+}
+@media (max-width:480px){
+  .project-head{ padding:140px 20px 40px; }
 }
 .project-head h1{
   font-family:var(--brand);
@@ -918,6 +937,6 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-gallery > div:last-child:nth-child(3n+2) .ph,
 .project-gallery > div:last-child:nth-child(3n+2) img{ aspect-ratio:16/9; }
 @media (max-width:720px){
-  .project-gallery{ grid-template-columns:1fr; }
+  .project-gallery{ grid-template-columns:1fr; padding-left:20px; padding-right:20px; }
   .project-gallery > div:nth-child(3n+1){ grid-column:span 1; }
 }
