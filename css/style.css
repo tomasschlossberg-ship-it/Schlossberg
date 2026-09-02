@@ -795,7 +795,6 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .project-row{
   display:block;
   padding:56px 0;
-  border-bottom:1px solid var(--line);
 }
 .project-row:first-child{ padding-top:0; }
 .project-row .tile-frame{ aspect-ratio:16/9; }

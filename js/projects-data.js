@@ -65,7 +65,10 @@ window.HOSS_PROJECTS = [
       'assets/projects/pilar-casa-el-arroyo-v2/07-pasillo-vista-pileta.jpg',
       'assets/projects/pilar-casa-el-arroyo-v2/08-bano-marmol-claro.jpg',
       'assets/projects/pilar-casa-el-arroyo-v2/09-bano-banera-exenta.jpg',
-      'assets/projects/pilar-casa-el-arroyo-v2/10-dormitorio-vacio.jpg'
+      'assets/projects/pilar-casa-el-arroyo-v2/10-dormitorio-vacio.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/11-exterior-fachada-jardin.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/12-exterior-pileta-lateral.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/13-exterior-pileta-frontal.jpg'
     ]
   },
 
