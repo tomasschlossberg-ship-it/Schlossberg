@@ -97,17 +97,35 @@ if(galleryEl && window.HOSS_PROJECTS){
 
     // Gallery: real photos if supplied, otherwise placeholder tiles
     // based on the "images" count, or a "pending" note if the project
-    // has no photos yet at all.
+    // has no photos yet at all. Some projects use a "stacked" layout —
+    // full-width, natural size, no cropping — instead of the default
+    // grid (see js/projects-data.js).
     var html = '';
-    if(project.gallery && project.gallery.length){
+    if(project.galleryLayout === 'stacked' && project.gallery && project.gallery.length){
+      galleryEl.className = 'project-gallery-stacked';
+      var imgs = project.gallery;
+      var i = 0;
+      while(i < imgs.length){
+        if(project.pairAt && (i + 1) === project.pairAt && imgs[i + 1]){
+          html += '<div class="gallery-pair">' +
+            '<img src="' + imgs[i] + '" alt="' + project.name + '">' +
+            '<img src="' + imgs[i + 1] + '" alt="' + project.name + '">' +
+            '</div>';
+          i += 2;
+        } else {
+          html += '<div class="gallery-full"><img src="' + imgs[i] + '" alt="' + project.name + '"></div>';
+          i += 1;
+        }
+      }
+    } else if(project.gallery && project.gallery.length){
       project.gallery.forEach(function(src){
         html += '<div><img src="' + src + '" alt="' + project.name + '"></div>';
       });
     } else if(project.pending){
       html = '<p style="grid-column:1/-1; text-align:center; padding:80px 0; color:var(--ink-soft); font-size:15px;">Images for this project are pending.</p>';
     } else {
-      for(var i = 1; i <= (project.images || 0); i++){
-        html += '<div><div class="ph"><span class="ph-label">Image ' + i + ' — replace</span></div></div>';
+      for(var j = 1; j <= (project.images || 0); j++){
+        html += '<div><div class="ph"><span class="ph-label">Image ' + j + ' — replace</span></div></div>';
       }
     }
     galleryEl.innerHTML = html;

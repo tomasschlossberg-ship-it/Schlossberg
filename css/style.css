@@ -735,9 +735,10 @@ form{ display:flex; flex-direction:column; gap:22px; }
 .contact-links a{
   font-family:var(--brand);
   font-weight:700;
-  font-size:clamp(28px, 4vw, 44px);
+  font-size:clamp(18px, 2.2vw, 26px);
   color:var(--ink);
   transition:opacity .25s var(--ease);
+  word-break:break-word;
 }
 .contact-links a:hover{ opacity:0.5; }
 .contact-simple .tile-frame{ aspect-ratio:4/5; }
@@ -939,4 +940,39 @@ form{ display:flex; flex-direction:column; gap:22px; }
 @media (max-width:720px){
   .project-gallery{ grid-template-columns:1fr; padding-left:20px; padding-right:20px; }
   .project-gallery > div:nth-child(3n+1){ grid-column:span 1; }
+}
+
+/* ==========================================================================
+   PROJECTS — "stacked" gallery layout (one-off, per project — see
+   js/projects-data.js "galleryLayout: 'stacked'"). Images run full width,
+   one below the other, at their natural size — no cropping, no forced
+   aspect-ratio. An optional pair (set via "pairAt") sits side by side,
+   smaller, as the one exception.
+   ========================================================================== */
+.project-gallery-stacked{
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+  padding:64px 40px 120px;
+  max-width:var(--container);
+  margin:0 auto;
+}
+.project-gallery-stacked .gallery-full img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.project-gallery-stacked .gallery-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.project-gallery-stacked .gallery-pair img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+@media (max-width:720px){
+  .project-gallery-stacked{ padding-left:20px; padding-right:20px; gap:24px; }
+  .project-gallery-stacked .gallery-pair{ grid-template-columns:1fr; gap:16px; }
 }

@@ -50,22 +50,22 @@ window.HOSS_PROJECTS = [
     year: 'TBD',
     overlayCover: true,
     cover: 'assets/projects/pilar-casa-el-arroyo/cover.jpg',
+    // Special one-off layout for this gallery only: images stacked full
+    // width, shown at their real/natural size (no cropping), except the
+    // pair starting at position "pairAt" which sits side by side, smaller.
+    galleryLayout: 'stacked',
+    pairAt: 8,
     gallery: [
-      'assets/projects/pilar-casa-el-arroyo/01.jpg',
-      'assets/projects/pilar-casa-el-arroyo/02.jpg',
-      'assets/projects/pilar-casa-el-arroyo/03.jpg',
-      'assets/projects/pilar-casa-el-arroyo/04.jpg',
-      'assets/projects/pilar-casa-el-arroyo/05.jpg',
-      'assets/projects/pilar-casa-el-arroyo/06.jpg',
-      'assets/projects/pilar-casa-el-arroyo/09.jpg',
-      'assets/projects/pilar-casa-el-arroyo/07.jpg',
-      'assets/projects/pilar-casa-el-arroyo/08.jpg',
-      'assets/projects/pilar-casa-el-arroyo/10.jpg',
-      'assets/projects/pilar-casa-el-arroyo/11.jpg',
-      'assets/projects/pilar-casa-el-arroyo/12.jpg',
-      'assets/projects/pilar-casa-el-arroyo/13.jpg',
-      'assets/projects/pilar-casa-el-arroyo/14.jpg',
-      'assets/projects/pilar-casa-el-arroyo/15.jpg'
+      'assets/projects/pilar-casa-el-arroyo-v2/01-pasillo-jardin-escalera.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/02-living-cocina-gris.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/03-living-estufa-persianas.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/04-pared-negra-cocina.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/05-cocina-isla-marmol.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/06-pasillo-baranda-vidrio.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/07-pasillo-vista-pileta.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/08-bano-marmol-claro.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/09-bano-banera-exenta.jpg',
+      'assets/projects/pilar-casa-el-arroyo-v2/10-dormitorio-vacio.jpg'
     ]
   },
 
